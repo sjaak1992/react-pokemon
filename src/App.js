@@ -1,11 +1,34 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import axios from "axios";
+
+
 
 function App() {
+    const [pokemons, setPokemons] = useState([]);
+
+    useEffect(()=> {
+        async function fetchData() {
+            try {
+                const response = await axios.get('https://pokeapi.co/api/v2/pokemon/')
+                setPokemons(response.data.results)
+                console.log(response.data.results);
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+        fetchData();
+    } , [])
+
+
   return (
-    <div>
-      Begin hier met de opdracht!
-    </div>
+      <ul>
+           {pokemons && pokemons.map((pokemon) => {
+                   return <li key={pokemon.name}> {pokemon.name}</li>
+               }
+          )}
+      </ul>
   );
 }
 
