@@ -35,9 +35,9 @@ function App() {
                 // console.log(pokemon) // wat zit erin? naam en url
 
                 return (
-                    <Pokemon name={pokemon.name}/>
-
+                    <Pokemon url={pokemon.url} name={pokemon.name}/>
                 )
+
             })}
             </ul>
         </div>

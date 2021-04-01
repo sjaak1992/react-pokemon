@@ -10,16 +10,25 @@ import * as url from "url";
 
 
 function Pokemon ({name}){
-    // console.log(props); // wat krijg je terug? alleen de naam zie app.js
+    // console.log({name}); // wat krijg je terug? alleen de naam zie app.js
 
     const [singlePokemon, setSinglePokemons] = useState({});
+   const [moves, setMoves] = useState([]);
+   const [weight, setWeight] =useState([]);
+   const [abilities, setAbilities] = useState([]);
 
     useEffect(() => {
         async function fetchOneData (){
             try {
-                const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-                setSinglePokemons(result.data)
-                console.log(result.data)
+                const {data} = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+                setSinglePokemons(data);
+                console.log(data);
+
+                setMoves(data.moves.length);
+                setWeight(data.weight)
+                setAbilities() // nog afmaken!
+
+
 
             } catch (e) {
                 console.log(e)
@@ -34,6 +43,10 @@ function Pokemon ({name}){
     return (
         <div>
             {singlePokemon && <h3>{singlePokemon?.name}</h3>}
+            <p>moves: {moves}</p>
+            <p>weight: {weight}</p>
+
+
         </div>
     )
 }
