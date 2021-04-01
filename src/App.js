@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from "axios";
+import Pokemon from "./Components /Pokemon";
+import * as url from "url";
 
 
 function App() {
@@ -10,11 +12,9 @@ function App() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const result = await axios.get("https://pokeapi.co/api/v2/pokemon/jigglypuff")
-                // console.log(response);
-                //result.data omdat de data eerst in een object zit
-                setPokemons(result.data) // -> als je een setter aanroept, dan word het hele component uitgevoerd, er word een update uitgevoerd.
-                console.log(result)
+                const result = await axios.get("https://pokeapi.co/api/v2/pokemon/")
+                setPokemons(result.data.results) // -> als je een setter aanroept, dan word het hele component uitgevoerd, er word een update uitgevoerd.
+                // console.log(result)
 
             } catch (error) {
                 console.log(error);
@@ -27,20 +27,24 @@ function App() {
 
 
     return (
-        <>
-        <div className="pokemon-container">
-            <p>{pokemons.name}</p>
-           <img src={pokemons.sprites.back_default}/>
-        </div>
-        </>
 
-        // // {/*<ul>*/}
-        // {/*     {pokemons && pokemons.map((pokemon) => {*/}
-        // {/*             return <li key={pokemon.name}> {pokemon.name}</li>*/}
-        // {/*         }*/}
-        //
-        // {/*    )}*/}
-        // {/*</ul>*/}
+        <div>
+            <ul>
+            {pokemons &&
+            pokemons.map((pokemon) => {
+                // console.log(pokemon) // wat zit erin? naam en url
+
+                return (
+                    <Pokemon name={pokemon.name}/>
+
+                )
+            })}
+            </ul>
+        </div>
+
+
+
+
     );
 }
 
