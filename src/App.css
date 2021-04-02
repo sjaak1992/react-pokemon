@@ -1,0 +1,27 @@
+body {
+    background-color: #feca1b;
+}
+
+header
+{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: 20px;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+#button-one,
+#button-two
+{
+    background-color: #3761a8;
+    color: white;
+    margin: 3px;
+}
+
+.card-container{
+    background-color:whitesmoke;
+    border-radius: 10px;
+}

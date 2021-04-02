@@ -9,46 +9,48 @@ import axios from "axios";
 import * as url from "url";
 
 
-function Pokemon ({name}){
+function Pokemon({name}) {
     // console.log({name}); // wat krijg je terug? alleen de naam zie app.js
 
     const [singlePokemon, setSinglePokemons] = useState({});
-   const [moves, setMoves] = useState([]);
-   const [weight, setWeight] =useState([]);
-   const [abilities, setAbilities] = useState([]);
+    const [moves, setMoves] = useState([]);
+    const [weight, setWeight] = useState([]);
+    const [sprites, setSprites] = useState([]);
+
 
     useEffect(() => {
-        async function fetchOneData (){
+        async function fetchOneData() {
             try {
                 const {data} = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+
                 setSinglePokemons(data);
-                console.log(data);
-
+                // console.log(data);
                 setMoves(data.moves.length);
-                setWeight(data.weight)
-                setAbilities() // nog afmaken!
-
-
+                setWeight(data.weight);
+                setSprites(data.sprites.front_default);
 
             } catch (e) {
                 console.log(e)
             }
         }
+
         fetchOneData();
     }, [])
 
 
-
-
     return (
-        <div>
+
+        <div className="card-container">
             {singlePokemon && <h3>{singlePokemon?.name}</h3>}
+            <img src={sprites} alt={singlePokemon.name}/>
+
             <p>moves: {moves}</p>
             <p>weight: {weight}</p>
 
-
         </div>
+
     )
+
 }
 
 export default Pokemon;
@@ -65,38 +67,3 @@ export default Pokemon;
 
 
 
-
-//
-//
-// function Pokemon (){
-//     const [pokemons, setPokemons] = useState({});
-//
-//     useEffect(() => {
-//         async function fetchData() {
-//             try {
-//                 const result = await axios.get("https://pokeapi.co/api/v2/pokemon/pidgey")
-//                 setPokemons(result.data.results)
-//
-//             } catch (error) {
-//                 console.log(error);
-//             }
-//
-//         }
-//
-//         fetchData();
-//     }, [])
-//
-//
-//
-//     return (
-//         <ul>
-//             {pokemons.map((pokemon) => {
-//                 return <li key={pokemon.name}>{pokemon.name}</li>
-//             })}
-//         </ul>
-//
-//     );
-//
-// }
-//
-// export default Pokemon;

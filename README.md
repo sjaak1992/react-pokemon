@@ -11,7 +11,7 @@ Het project is opgezet met [Create React App](https://github.com/facebook/create
 ## Eindresultaat
 Focus je deze opdracht niet op styling, maar om functionaliteit. Maar omdat iedereen blij wordt van leuke kleurtjes, is het voorbeeld toch voorzien van styling:
 
-![Eindresultaat](src/assets/screenshot.gif)
+![Eindresultaat](src/assets/screenshots/screenshot.gif)
 
 ## De applicatie starten
 Als je het project gecloned hebt naar jouw locale machine, installeer je eerst de node_modules door het volgende commando in de terminal te runnen:

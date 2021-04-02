@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from "axios";
+import pokeapi from "./assets/screenshots/pokeapi_256.png"
 import Pokemon from "./Components /Pokemon";
 import * as url from "url";
 
@@ -27,9 +28,19 @@ function App() {
 
 
     return (
+<>
+   <header>
+   <img src={pokeapi} alt="pokeapi-logo"/>
+   </header>
+
+<div className="buttons">
+    <button id="button-one" type="button">Volgende</button>
+    <button id="button-two" type="button">Vorige</button>
+</div>
+
 
         <div>
-            <ul>
+
             {pokemons &&
             pokemons.map((pokemon) => {
                 // console.log(pokemon) // wat zit erin? naam en url
@@ -39,9 +50,9 @@ function App() {
                 )
 
             })}
-            </ul>
-        </div>
 
+        </div>
+</>
 
 
 
