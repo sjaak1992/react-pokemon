@@ -1,7 +1,6 @@
 body {
     background-color: #feca1b;
 }
-
 header
 {
     display: flex;
@@ -13,6 +12,7 @@ header
     display: flex;
     justify-content: center;
 }
+
 #button-one,
 #button-two
 {
@@ -21,7 +21,32 @@ header
     margin: 3px;
 }
 
-.card-container{
-    background-color:whitesmoke;
-    border-radius: 10px;
+.card-container {
+    display: flex;
+/*    flex-wrap: wrap;*/
+/*    justify-content: space-around;*/
+/*    !*width: 100vw;*!*/
+/*    !*background-color: white;*!*/
+
 }
+
+.single-card {
+background-color: white;
+
+
+}
+
+
+
+/*@media screen and (min-width: 1400px) {*/
+/*    body {*/
+/*        background-color: hotpink;*/
+/*        display: flex;*/
+/*        justify-content: center;*/
+/*        align-items: center;*/
+/*    }*/
+/*    .card-container{*/
+/*        width: 1400px;*/
+/*    }*/
+/*}*/
+

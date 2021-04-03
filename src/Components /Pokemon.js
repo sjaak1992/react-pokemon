@@ -16,7 +16,7 @@ function Pokemon({name}) {
     const [moves, setMoves] = useState([]);
     const [weight, setWeight] = useState([]);
     const [sprites, setSprites] = useState([]);
-
+    // const [abilities, setAbilities] =useState({});
 
     useEffect(() => {
         async function fetchOneData() {
@@ -35,17 +35,21 @@ function Pokemon({name}) {
         }
 
         fetchOneData();
-    }, [])
+    }, [url])
 
 
     return (
 
-        <div className="card-container">
+        <div className="single-card">
             {singlePokemon && <h3>{singlePokemon?.name}</h3>}
-            <img src={sprites} alt={singlePokemon.name}/>
 
-            <p>moves: {moves}</p>
-            <p>weight: {weight}</p>
+                <img src={sprites} alt={singlePokemon.name}/>
+                <p>moves: {moves}</p>
+                <p>weight: {weight}</p>
+
+
+
+
 
         </div>
 
